@@ -17,9 +17,15 @@ class Generative:
     def calcMLE(self, x, posSample, negSample):
         mup = np.mean(x[posSample], axis=0)
         mun = np.mean(x[negSample], axis=0)
-        k = np.std(x[posSample], axis=0)
+        if(self.q != 2):
+            k = np.std(x[posSample], axis=0)
+        else:
+            k = np.std(x)
         sigmap = np.mean(k*k)
-        k = np.std(x[negSample], axis=0)
+        if(self.q != 2):
+            k = np.std(x[negSample], axis=0)
+        else:
+            k = np.std(x)
         sigman = np.mean(k*k)
         mup.reshape((1, mup.shape[0]))
         mun.reshape((1, mun.shape[0]))
@@ -38,7 +44,7 @@ class Generative:
 
         if self.q == 2:
             plt.title('Same Sigma Part: ' + str(self.p))
-            sigmaj = sigmai
+            # sigmaj = sigmai
         else:
             plt.title('Different Sigma Part: ' + str(self.p))
 
