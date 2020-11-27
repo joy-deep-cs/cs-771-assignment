@@ -1,0 +1,28 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pylint = "*"
+pep8 = "*"
+sphinx = "*"
+sphinx-rtd-theme = "*"
+pytest = "*"
+
+[packages]
+numpy = "*"
+Ipython = "*"
+matplotlib = "*"
+sklearn = "*"
+
+
+[requires]
+python_version = "3.8"
+
+[scripts]
+start = "flask run"
+test = "pytest"
+lint = "pylint src"
+docs = "sphinx-apidoc -o src/ ../src"
+html = "make html"
